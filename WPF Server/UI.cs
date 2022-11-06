@@ -22,7 +22,35 @@ namespace WPF_Server
                 {
                     if (window.GetType() == typeof(MainWindow))
                     {
-                        (window as MainWindow).TextDisplay.Content = message;
+                        (window as MainWindow).TextDisplay.Content += message;
+                    }
+                }
+            });
+        }
+
+        public static void ClearLog()
+        {
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                foreach (Window window in Application.Current.Windows)
+                {
+                    if (window.GetType() == typeof(MainWindow))
+                    {
+                        (window as MainWindow).TextDisplay.Content = "";
+                    }
+                }
+            });
+        }
+
+        public static void GloveValue(string message)
+        {
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                foreach (Window window in Application.Current.Windows)
+                {
+                    if (window.GetType() == typeof(MainWindow))
+                    {
+                        (window as MainWindow).GloveValue.Content = message;
                     }
                 }
             });

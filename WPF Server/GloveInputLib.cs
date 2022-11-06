@@ -114,6 +114,41 @@ namespace GloveInputLib
             calibrate = false;
             trgValue = 0;
         }
+
+        public override string ToString()
+        {
+            string str = "";
+            for(int i = 0; i < 20; i += 4)
+            {
+                str += "\nFinger" + (i / 4) + ": { ";
+                for (int j = 0; j < 4; j++)
+                {
+                    str += flexion[i + j] + " ";
+                }
+                str += "}";
+            }
+
+            str += "\nSplay: { ";
+            for (int i = 0; i < 5; i++)
+            {
+                str += splay[i] + " ";
+            }
+            str += "}";
+
+            str += "\nJoyX: " + joyX;
+            str += "\nJoyY: " + joyY;
+            str += "\nJoyButton: " + joyButton;
+            str += "\nTriggerButton: " + trgButton;
+            str += "\nAButton: " + aButton;
+            str += "\nBButton: " + bButton;
+            str += "\nGrab: " + grab;
+            str += "\nPinch: " + pinch;
+            str += "\nMenu: " + menu;
+            str += "\nCalibrate: " + calibrate;
+            str += "\nTriggerValue: " + trgValue; 
+
+            return str;
+        }
     }
 
 
@@ -121,6 +156,9 @@ namespace GloveInputLib
     public class GloveInputLink
     {
         private NamedPipeClientStream pipe;
+
+        public static GloveInputLink Left_Glove = new GloveInputLink(Handness.Left);
+        public static GloveInputLink Right_Glove = new GloveInputLink(Handness.Right);
 
         //Handness is an enum used to pass what hand the GloveInputLink object will write to
         public enum Handness

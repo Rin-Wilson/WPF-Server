@@ -40,10 +40,5 @@ namespace WPF_Server
         {
             Network_Manager.StartServer();
         }
-
-        void UpdateText(string text)
-        {
-            TextDisplay.Content = text;
-        }
     }
 }

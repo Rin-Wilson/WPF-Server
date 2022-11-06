@@ -33,6 +33,7 @@
         </Rectangle>
         <Rectangle Width="40" Height="40" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0" Fill="#9F73AB"/>
         <Button Content="StartServer" HorizontalAlignment="Center" Margin="0,307,0,0" VerticalAlignment="Top" Click="OnServerStart"/>
-        <Label Foreground="White" Content="Label" HorizontalAlignment="Center" Height="31" Margin="0,411,0,0" VerticalAlignment="Top" Width="272" x:Name="TextDisplay"/>
+        <Label Foreground="White" Content="" HorizontalAlignment="Center" Height="120" Margin="0,411,0,0" VerticalAlignment="Top" Width="272" x:Name="TextDisplay"/>
+        <Label Foreground="White" Content="test" HorizontalAlignment="Left" Height="755" Margin="164,95,0,0" VerticalAlignment="Top" Width="329" x:Name="GloveValue"/>
     </Grid>
 </Window>

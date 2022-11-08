@@ -13,19 +13,22 @@
             </Rectangle.Effect>
         </Rectangle>
         <Rectangle HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <Rectangle HorizontalAlignment="Center" Height="130" Margin="-150,150,0,0" VerticalAlignment="Top" Width="130" Fill="#FF333333" RadiusX="5" RadiusY="5" OpacityMask="White">
+        <Rectangle x:Name="GloveBox1" HorizontalAlignment="Center" Height="130" Margin="-150,150,0,0" VerticalAlignment="Top" Width="130" Fill="#FF333333" RadiusX="5" RadiusY="5" OpacityMask="White">
             <Rectangle.Effect>
                 <DropShadowEffect BlurRadius="20" ShadowDepth="0" Direction="270" Opacity="0.5"/>
             </Rectangle.Effect>
         </Rectangle>
-        <TextBlock Text="Glove 1" Foreground="#99FFFFFF" TextAlignment="Left" Width="110" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="670,155,0,0" FontFamily="Tahoma" FontWeight="Normal"/>
+        <TextBlock Text="Glove 1" Foreground="#99FFFFFF" TextAlignment="Left" Width="110" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-150,155,0,0" FontFamily="Tahoma" FontWeight="Normal" FontSize="12"/>
+        <TextBlock x:Name="glove1IP" Text="IP:" Foreground="#DDFFFFFF" TextAlignment="Left" Width="110" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-150,175,0,0" FontFamily="Tahoma" FontWeight="Normal" FontSize="14"/>
 
-        <Rectangle HorizontalAlignment="Center" Height="130" Margin="150,150,0,0" VerticalAlignment="Top" Width="130" Fill="#FF333333" RadiusX="5" RadiusY="5" OpacityMask="White">
+
+        <Rectangle x:Name="GloveBox2" HorizontalAlignment="Center" Height="130" Margin="150,150,0,0" VerticalAlignment="Top" Width="130" Fill="#FF333333" RadiusX="5" RadiusY="5" OpacityMask="White">
             <Rectangle.Effect>
                 <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="0.5"/>
             </Rectangle.Effect>
         </Rectangle>
-        <TextBlock Text="Glove 2" Foreground="#99FFFFFF" TextAlignment="Left" Width="110" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="820,155,0,0" FontFamily="Tahoma" FontWeight="Normal"/>
+        <TextBlock Text="Glove 2" Foreground="#99FFFFFF" TextAlignment="Left" Width="110" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="150,155,0,0" FontFamily="Tahoma" FontWeight="Normal" FontSize="12"/>
+        <TextBlock x:Name="glove2IP" Text="IP:" Foreground="#DDFFFFFF" TextAlignment="Left" Width="110" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="150,175,0,0" FontFamily="Tahoma" FontWeight="Normal" FontSize="14"/>
         <Rectangle Height="40" HorizontalAlignment="Stretch" VerticalAlignment="Top" Fill="#FF232323">
             <Rectangle.Effect>
                 <DropShadowEffect Direction="270" Opacity="0.5"/>

@@ -58,6 +58,7 @@ namespace WPF_Server
                 {
                     d.isConnected = true;
                     sender = d;
+                    UI.UpdateBox();
                 }
             }
 

@@ -9,16 +9,4 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="heartIcon %281%29.png" />
-    <None Remove="heartIcon %282%29.png" />
-    <None Remove="New Project.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="heartIcon (1).png" />
-    <Resource Include="heartIcon (2).png" />
-    <Resource Include="New Project.png" />
-  </ItemGroup>
-
 </Project>

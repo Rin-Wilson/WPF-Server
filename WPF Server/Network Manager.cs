@@ -68,11 +68,15 @@ namespace WPF_Server
             }
             else if (packetType == Data_Packet && sender != null)
             {
-                if (packet.Length == Data_Packet_Length + 1)
+                if (packet.Length == Data_Packet_Length + 1 || packet.Length == Data_Packet_Length + 5)
                 {
                     InputData gloveData = ParseData(packet);
                     UI.GloveValue(gloveData.ToString());
                     sender.SendInput(gloveData);
+                    if (packet.Length == Data_Packet_Length + 5)
+                    {
+                        sender.battery = BitConverter.ToSingle(packet, 122);
+                    }
                 }
             }
         }

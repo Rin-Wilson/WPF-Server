@@ -29,7 +29,7 @@
         </Rectangle>
         <TextBlock Text="Glove 2" Foreground="#99FFFFFF" TextAlignment="Left" Width="110" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="150,155,0,0" FontFamily="Tahoma" FontWeight="Normal" FontSize="12"/>
         <TextBlock x:Name="glove2IP" Text="IP:" Foreground="#DDFFFFFF" TextAlignment="Left" Width="110" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="150,175,0,0" FontFamily="Tahoma" FontWeight="Normal" FontSize="14"/>
-        <Rectangle Height="40" HorizontalAlignment="Stretch" VerticalAlignment="Top" Fill="#FF232323">
+        <Rectangle Height="40" VerticalAlignment="Top" Fill="#FF232323">
             <Rectangle.Effect>
                 <DropShadowEffect Direction="270" Opacity="0.5"/>
             </Rectangle.Effect>
@@ -38,6 +38,6 @@
         <Button Content="StartServer" HorizontalAlignment="Center" Margin="0,307,0,0" VerticalAlignment="Top" Click="OnServerStart"/>
         <Label Foreground="White" Content="" HorizontalAlignment="Center" Height="120" Margin="0,411,0,0" VerticalAlignment="Top" Width="272" x:Name="TextDisplay"/>
         <Label Foreground="White" Content="test" HorizontalAlignment="Left" Height="755" Margin="164,95,0,0" VerticalAlignment="Top" Width="329" x:Name="GloveValue"/>
-        <local:DeviceDisplay HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <local:DeviceDisplay HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1280,78,0,0"/>
     </Grid>
 </Window>

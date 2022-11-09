@@ -14,6 +14,7 @@ namespace WPF_Server
     {
         public static List<Device> deviceList = new List<Device>();
         public bool isConnected = true;
+        public float battery;
 
         public enum Type
         {

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WPF_Server"
         mc:Ignorable="d"
         Title="GloveServer" Height="900" Width="1600" FontSize="16">
-    <Grid Background="#FF121212">
+    <Grid x:Name="mainGrid" Background="#FF121212">
         <Rectangle HorizontalAlignment="Center" VerticalAlignment="Top" Height="200" Width="300" Margin="10,95,10,0" Fill="#FF232323">
             <Rectangle.Effect>
                 <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="0.5"/>
@@ -38,6 +38,7 @@
         <Button Content="StartServer" HorizontalAlignment="Center" Margin="0,307,0,0" VerticalAlignment="Top" Click="OnServerStart"/>
         <Label Foreground="White" Content="" HorizontalAlignment="Center" Height="120" Margin="0,411,0,0" VerticalAlignment="Top" Width="272" x:Name="TextDisplay"/>
         <Label Foreground="White" Content="test" HorizontalAlignment="Left" Height="755" Margin="164,95,0,0" VerticalAlignment="Top" Width="329" x:Name="GloveValue"/>
-        <local:DeviceDisplay HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,65,0,0"/>
+        <ItemsControl x:Name="deviceList" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="30,65,0,0">
+        </ItemsControl>
     </Grid>
 </Window>

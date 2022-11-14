@@ -21,9 +21,21 @@ namespace WPF_Server
     /// </summary>
     public partial class MainWindow : Window
     {
+        public List<DeviceDisplay> displays = new List<DeviceDisplay>();
         public MainWindow()
         {
             InitializeComponent();
+            
+            for (int i = 0; i < 3; i++)
+            {
+                DeviceDisplay display = new DeviceDisplay();
+                display.Margin = new Thickness(20, 10, 0, 0);
+                display.HorizontalAlignment = HorizontalAlignment.Left;
+                display.VerticalAlignment = VerticalAlignment.Top;
+
+                displays.Add(display);
+            }
+            deviceList.ItemsSource = displays;
         }
 
         void OnDetectL(object sender, RoutedEventArgs e)

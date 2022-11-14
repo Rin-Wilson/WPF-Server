@@ -77,7 +77,7 @@ namespace WPF_Server
             });
         }
 
-        public static void UpdateBox()
+        public static void AddDisplay()
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
@@ -85,14 +85,9 @@ namespace WPF_Server
                 {
                     if (window.GetType() == typeof(MainWindow))
                     {
-                        MainWindow mainWindow = (window as MainWindow);
-                        if (Device.deviceList.Count > 0)
+                        for (int i = 0; i < Device.deviceList.Count; i++)
                         {
-                            mainWindow.glove1IP.Text = "IP: " + Device.deviceList[0].iP.ToString();
-                            if (Device.deviceList.Count > 1)
-                            {
-                                mainWindow.glove2IP.Text = "IP: " + Device.deviceList[1].iP.ToString();
-                            }
+
                         }
                     }
                 }

@@ -12,8 +12,9 @@ namespace WPF_Server
 {
     public class Device
     {
-        public static List<Device> deviceList = new List<Device>();
-        public bool isConnected = true;
+        public static List<Device> deviceList = new();
+        public bool heartBeatRecieved = true;
+        public bool isConnected = false;
         public float battery;
 
         public enum Type
@@ -49,6 +50,7 @@ namespace WPF_Server
                 }
             }
             deviceList.Add(newDevice);
+            UI.AddDisplay(newDevice.iP.ToString(), newDevice.battery);
             UI.ClearLog();
             foreach (Device d in deviceList)
             {

@@ -28,7 +28,7 @@ namespace WPF_Server
 
             System.Timers.Timer heartBeatTimer = new()
             {
-                Interval = 6000,
+                Interval = 3000,
                 AutoReset = true,
                 Enabled = true
             };
@@ -56,7 +56,7 @@ namespace WPF_Server
             {
                 if(remoteEP.Address.Equals(d.iP))
                 {
-                    d.isConnected = true;
+                    d.heartBeatRecieved = true;
                     sender = d;
                     //UI.UpdateBox();
                 }
@@ -64,7 +64,7 @@ namespace WPF_Server
 
             if (packetType == Handshake_Packet)
             {
-                Device.AddDevice(new Device(remoteEP.Address, Device.Type.Right));
+                Device.AddDevice(new Device(remoteEP.Address, Device.Type.None));
             }
             else if (packetType == Data_Packet && sender != null)
             {
@@ -75,7 +75,8 @@ namespace WPF_Server
                     sender.SendInput(gloveData);
                     if (packet.Length == Data_Packet_Length + 5)
                     {
-                        sender.battery = BitConverter.ToSingle(packet, 122);
+                        sender.battery = BitConverter.ToSingle(packet, 121);
+                        UI.DisplayBattery();
                     }
                 }
             }
@@ -114,15 +115,18 @@ namespace WPF_Server
         {
             for (int i = 0; i < Device.deviceList.Count; i++)
             {
-                if (!Device.deviceList[i].isConnected)
+                if (!Device.deviceList[i].heartBeatRecieved)
                 {
-                    Device.RemoveDevice(i);
+                    //Device.RemoveDevice(i);
+                    Device.deviceList[i].isConnected = false;
                 }
                 else
                 {
-                    Device.deviceList[i].isConnected = false;
+                    Device.deviceList[i].heartBeatRecieved = false;
+                    Device.deviceList[i].isConnected = true;
                 }
             }
+            UI.DisplayConnection();
         }
     }
 }

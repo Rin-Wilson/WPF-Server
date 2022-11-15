@@ -16,8 +16,9 @@ using System.Diagnostics;
 
 namespace WPF_Server
 {
-    internal class UI
+    public class UI
     {
+        
         public static void Log(string message)
         {
             Application.Current.Dispatcher.Invoke(() =>
@@ -71,13 +72,13 @@ namespace WPF_Server
                 {
                     if (window.GetType() == typeof(MainWindow))
                     {
-                        (window as MainWindow).GloveValue.Content = message;
+                        //(window as MainWindow).GloveValue.Content = message;
                     }
                 }
             });
         }
 
-        public static void AddDisplay()
+        public static void AddDisplay(string ip, float battery)
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
@@ -85,9 +86,66 @@ namespace WPF_Server
                 {
                     if (window.GetType() == typeof(MainWindow))
                     {
+                        (window as MainWindow).AddDisplay(ip, battery);
+                    }
+                }
+            });
+        }
+
+        public static void DisplayConnection()
+        {
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                foreach (Window window in Application.Current.Windows)
+                {
+                    if (window.GetType() == typeof(MainWindow))
+                    {
+                        MainWindow mainWindow = (window as MainWindow);
+
+                        for(int i = 0; i < Device.deviceList.Count; i++)
+                        {
+                            DeviceDisplay d = (DeviceDisplay)mainWindow.deviceList.Items.GetItemAt(i);
+                            d.ConnectionIdicator.Visibility = Device.deviceList[i].isConnected ? Visibility.Visible : Visibility.Hidden;
+                        }
+                    }
+                }
+            });
+        }
+
+        public static void DisplayBattery() 
+        {
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                foreach (Window window in Application.Current.Windows)
+                {
+                    if (window.GetType() == typeof(MainWindow))
+                    {
+                        MainWindow mainWindow = (window as MainWindow);
+
                         for (int i = 0; i < Device.deviceList.Count; i++)
                         {
+                            DeviceDisplay d = (DeviceDisplay)mainWindow.deviceList.Items.GetItemAt(i);
+                            d.Battery.Value = Device.deviceList[i].battery;
+                        }
+                    }
+                }
+            });
+        }
 
+        public static void DisplayType()
+        {
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                foreach (Window window in Application.Current.Windows)
+                {
+                    if (window.GetType() == typeof(MainWindow))
+                    {
+                        MainWindow mainWindow = (window as MainWindow);
+
+                        for (int i = 0; i < Device.deviceList.Count; i++)
+                        {
+                            DeviceDisplay d = (DeviceDisplay)mainWindow.deviceList.Items.GetItemAt(i);
+                            Device.deviceList[i].type = d.type;
                         }
                     }
                 }

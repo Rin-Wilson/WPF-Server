@@ -22,6 +22,7 @@ namespace WPF_Server
     /// </summary>
     public partial class DeviceDisplay : UserControl
     {
+        public Device.Type type;
         public DeviceDisplay()
         {
             InitializeComponent();
@@ -29,12 +30,20 @@ namespace WPF_Server
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            int selectedIndex = TypeSelection.SelectedIndex;
 
-        }
-
-        private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-
+            switch (selectedIndex)
+            {
+                case 0:
+                    type = Device.Type.None;
+                    break;
+                case 1:
+                    type = Device.Type.Left;
+                    break;
+                case 2:
+                    type = Device.Type.Right;
+                    break;
+            }
         }
     }
 }

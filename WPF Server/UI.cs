@@ -64,7 +64,7 @@ namespace WPF_Server
             });
         }
 
-        public static void GloveValue(string message)
+        public static void GloveValue(string message, Device.Type type)
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
@@ -72,7 +72,15 @@ namespace WPF_Server
                 {
                     if (window.GetType() == typeof(MainWindow))
                     {
-                        //(window as MainWindow).GloveValue.Content = message;
+                        if (type == Device.Type.Right)
+                        {
+                            (window as MainWindow).GloveValueR.Content = message;
+                        }
+                        if (type == Device.Type.Left)
+                        {
+                            (window as MainWindow).GloveValueL.Content = message;
+                        }
+                        
                     }
                 }
             });
@@ -142,6 +150,7 @@ namespace WPF_Server
                     {
                         MainWindow mainWindow = (window as MainWindow);
 
+                        if (!mainWindow.deviceList.Items.IsEmpty)
                         for (int i = 0; i < Device.deviceList.Count; i++)
                         {
                             DeviceDisplay d = (DeviceDisplay)mainWindow.deviceList.Items.GetItemAt(i);

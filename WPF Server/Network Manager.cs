@@ -71,7 +71,6 @@ namespace WPF_Server
                 if (packet.Length == Data_Packet_Length + 1 || packet.Length == Data_Packet_Length + 5)
                 {
                     InputData gloveData = ParseData(packet);
-                    UI.GloveValue(gloveData.ToString());
                     sender.SendInput(gloveData);
                     if (packet.Length == Data_Packet_Length + 5)
                     {

@@ -95,6 +95,7 @@ namespace WPF_Server
                     GloveInputLink.Left_Glove.Write(data);
                 }
             }
+            UI.GloveValue(data.ToString(), type);
         }
     }
 }

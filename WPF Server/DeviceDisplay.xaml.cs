@@ -22,7 +22,7 @@ namespace WPF_Server
     /// </summary>
     public partial class DeviceDisplay : UserControl
     {
-        public Device.Type type;
+        public Device.Type type = Device.Type.None;
         public DeviceDisplay()
         {
             InitializeComponent();
@@ -44,6 +44,8 @@ namespace WPF_Server
                     type = Device.Type.Right;
                     break;
             }
+
+            UI.DisplayType();
         }
     }
 }

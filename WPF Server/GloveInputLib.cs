@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO.Pipes;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 /*
  * library created by Rin.
@@ -173,7 +174,7 @@ namespace GloveInputLib
             string hand = handness == Handness.Right ? "right" : "left";
             pipe = new NamedPipeClientStream(".", $"vrapplication\\input\\glove\\v2\\{hand}", PipeDirection.Out);
             //connect to the pipe
-            //Console.WriteLine($"Connecting to {hand} hand pipe...");
+            Trace.WriteLine($"Connecting to {hand} hand pipe...");
             try
             {
                 //try to connect to the pipe, timeout after 5 seconds
@@ -182,14 +183,19 @@ namespace GloveInputLib
             catch (Exception e)
             {
                 //if an error is thrown log the message
-                //Console.WriteLine(e.Message);
+                Trace.WriteLine(e.Message);
             }
-            /*
+            
             if (pipe.IsConnected)
-                Console.WriteLine($"Connected! CanWrite:{pipe.CanWrite}");
+                Trace.WriteLine($"Connected! CanWrite:{pipe.CanWrite}");
             else
-                Console.WriteLine("Connection failed");
-            */
+                Trace.WriteLine("Connection failed");
+            
+        }
+
+        public bool IsConnected()
+        {
+            return pipe.IsConnected;
         }
 
         //set all input values to default.
@@ -201,7 +207,12 @@ namespace GloveInputLib
         //send values to the driver.
         public void Write(InputData input)
         {
-            if (!pipe.IsConnected) return;
+            //Trace.Write("Attempting write : ");
+            if (!pipe.IsConnected || pipe.OutBufferSize > 0) 
+            {
+                //Trace.WriteLine("");
+                return; 
+            }
 
             int size = Marshal.SizeOf(input);
             //Console.WriteLine(size);
@@ -211,7 +222,7 @@ namespace GloveInputLib
             Marshal.StructureToPtr(input, ptr, true);
             Marshal.Copy(ptr, arr, 0, size);
             Marshal.FreeHGlobal(ptr);
-
+            //Trace.WriteLine("Writing Packet" + new Random().Next());
             pipe.Write(arr, 0, size);
         }
     }

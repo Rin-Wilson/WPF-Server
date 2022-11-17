@@ -16,6 +16,7 @@ namespace WPF_Server
         public bool heartBeatRecieved = true;
         public bool isConnected = false;
         public float battery;
+        public UdpClient udpClient;
 
         public enum Type
         {
@@ -31,12 +32,16 @@ namespace WPF_Server
         {
             this.iP = iP;
             type = Type.None;
+            udpClient = new UdpClient();
+            udpClient.Connect(iP, 0);
         }
 
         public Device(IPAddress iP, Type type)
         {
             this.type = type;
             this.iP = iP;
+            udpClient = new UdpClient();
+            udpClient.Connect(iP, 0);
         }
 
         public static void AddDevice(Device newDevice)
@@ -49,13 +54,10 @@ namespace WPF_Server
                     return;
                 }
             }
-            deviceList.Add(newDevice);
             UI.AddDisplay(newDevice.iP.ToString(), newDevice.battery);
+            deviceList.Add(newDevice);
+            
             UI.ClearLog();
-            foreach (Device d in deviceList)
-            {
-                UI.Log("\n" + deviceList.IndexOf(d) + ": " + d.iP.ToString());
-            }
         }
 
         public static void RemoveDevice(Device device)
@@ -88,14 +90,23 @@ namespace WPF_Server
             {
                 if (type == Type.Right)
                 {
-                    GloveInputLink.Right_Glove.Write(data);
+                    new Task(() => { GloveInputLink.Right_Glove.Write(data); });
                 }
                 else if (type == Type.Left)
                 {
-                    GloveInputLink.Left_Glove.Write(data);
+                    new Task(() => { GloveInputLink.Left_Glove.Write(data); });
                 }
             }
             UI.GloveValue(data.ToString(), type);
+        }
+
+        public void Listen(IPEndPoint remoteEP)
+        {
+            byte[] rcvData = udpClient.Receive(ref remoteEP); ;
+            short packetType = Convert.ToInt16(rcvData[0]);
+
+            if (packetType == 1)
+            Network_Manager.RoutePacket(rcvData);
         }
     }
 }

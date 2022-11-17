@@ -7,38 +7,22 @@
         mc:Ignorable="d"
         Title="GloveServer" Height="900" Width="1600" FontSize="16">
     <Grid x:Name="mainGrid" Background="#FF121212">
-        <Rectangle HorizontalAlignment="Center" VerticalAlignment="Top" Height="200" Width="300" Margin="10,95,10,0" Fill="#FF232323">
+        <Rectangle HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="300" Margin="0,0,0,0" Fill="#FF232323">
             <Rectangle.Effect>
-                <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="0.5"/>
+                <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="0"/>
             </Rectangle.Effect>
         </Rectangle>
         <Rectangle HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <Rectangle x:Name="GloveBox1" HorizontalAlignment="Center" Height="130" Margin="-150,150,0,0" VerticalAlignment="Top" Width="130" Fill="#FF333333" RadiusX="5" RadiusY="5" OpacityMask="White">
+        <Rectangle Height="40" VerticalAlignment="Top" Fill="#FF333333">
             <Rectangle.Effect>
-                <DropShadowEffect BlurRadius="20" ShadowDepth="0" Direction="270" Opacity="0.5"/>
-            </Rectangle.Effect>
-        </Rectangle>
-        <TextBlock Text="Glove 1" Foreground="#99FFFFFF" TextAlignment="Left" Width="110" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-150,155,0,0" FontFamily="Tahoma" FontWeight="Normal" FontSize="12"/>
-        <TextBlock x:Name="glove1IP" Text="IP:" Foreground="#DDFFFFFF" TextAlignment="Left" Width="110" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-150,175,0,0" FontFamily="Tahoma" FontWeight="Normal" FontSize="14"/>
-
-
-        <Rectangle x:Name="GloveBox2" HorizontalAlignment="Center" Height="130" Margin="150,150,0,0" VerticalAlignment="Top" Width="130" Fill="#FF333333" RadiusX="5" RadiusY="5" OpacityMask="White">
-            <Rectangle.Effect>
-                <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="0.5"/>
-            </Rectangle.Effect>
-        </Rectangle>
-        <TextBlock Text="Glove 2" Foreground="#99FFFFFF" TextAlignment="Left" Width="110" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="150,155,0,0" FontFamily="Tahoma" FontWeight="Normal" FontSize="12"/>
-        <TextBlock x:Name="glove2IP" Text="IP:" Foreground="#DDFFFFFF" TextAlignment="Left" Width="110" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="150,175,0,0" FontFamily="Tahoma" FontWeight="Normal" FontSize="14"/>
-        <Rectangle Height="40" VerticalAlignment="Top" Fill="#FF232323">
-            <Rectangle.Effect>
-                <DropShadowEffect Direction="270" Opacity="0.5"/>
+                <DropShadowEffect Direction="0" Opacity="0" BlurRadius="20"/>
             </Rectangle.Effect>
         </Rectangle>
         <Rectangle Width="40" Height="40" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0" Fill="#9F73AB"/>
-        <Button Content="StartServer" HorizontalAlignment="Center" Margin="0,307,0,0" VerticalAlignment="Top" Click="OnServerStart"/>
-        <Label Foreground="White" Content="" HorizontalAlignment="Center" Height="120" Margin="0,411,0,0" VerticalAlignment="Top" Width="272" x:Name="TextDisplay"/>
-        <Label Foreground="White" Content="test" HorizontalAlignment="Left" Height="755" Margin="164,95,0,0" VerticalAlignment="Top" Width="329" x:Name="GloveValueL"/>
+        <Button Content="StartServer" HorizontalAlignment="Left" Margin="820,60,0,0" VerticalAlignment="Top" Click="OnServerStart"/>
+        <Label Foreground="White" Content="" HorizontalAlignment="Left" Height="120" Margin="724,495,0,0" VerticalAlignment="Top" Width="272" x:Name="TextDisplay"/>
+        <Label Foreground="White" Content="test" HorizontalAlignment="Left" Height="755" Margin="390,109,0,0" VerticalAlignment="Top" Width="329" x:Name="GloveValueL"/>
         <Label Foreground="White" Content="test" HorizontalAlignment="Right" Height="755" Margin="0,95,164,0" VerticalAlignment="Top" Width="329" x:Name="GloveValueR"/>
-        <ItemsControl x:Name="deviceList" VerticalAlignment="Stretch" HorizontalAlignment="Left" Margin="30,65,0,20" Width="260"/>
+        <ItemsControl x:Name="deviceList" VerticalAlignment="Stretch" HorizontalAlignment="Left" Margin="20,60,0,20" Width="260"/>
     </Grid>
 </Window>

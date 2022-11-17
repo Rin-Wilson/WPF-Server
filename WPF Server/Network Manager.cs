@@ -19,12 +19,14 @@ namespace WPF_Server
         private const short Data_Packet = 1;
         private const short Data_Packet_Length = 120;
 
-        private static IPEndPoint remoteEP = new IPEndPoint(IPAddress.Any, 0);
+        public static IPEndPoint remoteEP = new IPEndPoint(IPAddress.Any, 0);
 
         public static void StartServer()
         {
             Thread serverThread = new Thread( new ThreadStart(ServerLoop) );
             serverThread.Start();
+            GloveInputLink.Right_Glove.Relax();
+            GloveInputLink.Right_Glove.Relax();
 
             System.Timers.Timer heartBeatTimer = new()
             {
@@ -42,14 +44,24 @@ namespace WPF_Server
 
             while (true)
             {
-                byte[] rcvData = client.Receive(ref remoteEP);
-                RoutePacket(rcvData);
+                new Task(() =>
+                {
+                    byte[] rcvData = client.Receive(ref remoteEP);
+                    RoutePacket(rcvData);
+                }).Start();
+                foreach (Device d in Device.deviceList)
+                {
+                        new Task(() =>
+                        {
+                            d.Listen(remoteEP);
+                        }).Start();
+                }
             } 
         }
 
-        private static void RoutePacket(byte[] packet)
+        public static void RoutePacket(byte[] packet)
         {
-            Trace.WriteLine("Routing Packet");
+            //Trace.WriteLine("Routing Packet" + new Random().Next());
             short packetType = Convert.ToInt16(packet[0]);
             Device sender = null;
             foreach (Device d in Device.deviceList)
@@ -125,7 +137,7 @@ namespace WPF_Server
                     Device.deviceList[i].isConnected = true;
                 }
             }
-            UI.DisplayConnection();
+            new Task( UI.DisplayConnection ).Start();
         }
     }
 }

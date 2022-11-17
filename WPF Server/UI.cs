@@ -110,7 +110,8 @@ namespace WPF_Server
                     {
                         MainWindow mainWindow = (window as MainWindow);
 
-                        for(int i = 0; i < Device.deviceList.Count; i++)
+                        if (mainWindow.deviceList.Items.Count > 0)
+                        for (int i = 0; i < Device.deviceList.Count; i++)
                         {
                             DeviceDisplay d = (DeviceDisplay)mainWindow.deviceList.Items.GetItemAt(i);
                             d.ConnectionIdicator.Visibility = Device.deviceList[i].isConnected ? Visibility.Visible : Visibility.Hidden;
@@ -130,6 +131,7 @@ namespace WPF_Server
                     {
                         MainWindow mainWindow = (window as MainWindow);
 
+                        if (mainWindow.deviceList.Items.Count > 0)
                         for (int i = 0; i < Device.deviceList.Count; i++)
                         {
                             DeviceDisplay d = (DeviceDisplay)mainWindow.deviceList.Items.GetItemAt(i);
@@ -150,7 +152,7 @@ namespace WPF_Server
                     {
                         MainWindow mainWindow = (window as MainWindow);
 
-                        if (!mainWindow.deviceList.Items.IsEmpty)
+                        if (mainWindow.deviceList.Items.Count > 0)
                         for (int i = 0; i < Device.deviceList.Count; i++)
                         {
                             DeviceDisplay d = (DeviceDisplay)mainWindow.deviceList.Items.GetItemAt(i);

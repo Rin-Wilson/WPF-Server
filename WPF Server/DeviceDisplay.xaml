@@ -16,7 +16,7 @@
     <Grid Width="260" Height="130">
         <Rectangle Fill="#FF333333" RadiusX="5" RadiusY="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Rectangle.Effect>
-                <DropShadowEffect ShadowDepth="0"/>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="20" Opacity="0"/>
             </Rectangle.Effect>
         </Rectangle>
         <TextBlock Text="Device" x:Name="Title" Foreground="#99FFFFFF" FontFamily="Tahoma" FontWeight="Normal" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Height="20" Margin="5,5,0,0"/>
